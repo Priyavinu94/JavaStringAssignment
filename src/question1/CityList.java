@@ -5,6 +5,7 @@
  */
 package question1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CityList {
@@ -19,15 +20,19 @@ public class CityList {
 		// Part 2 : Asking user to enter a city name to search in the list
 		System.out.println("Enter the city name that you want to search");
 		String searchCity = scanner.next();
-		boolean isCityInList = false;
-		System.out.print("Checks if the city " + searchCity + " is in the citylist :  ");
-		for (String city : cityList) {
-			if (city.equalsIgnoreCase(searchCity)) {
-				isCityInList = true;
-				break;
-			}
-		}
-		System.out.println(isCityInList ? "City name found\n" : "City not found in the list\n");
+		System.out.println(
+				Arrays.stream(cityList).anyMatch(city -> city.equalsIgnoreCase(searchCity)) ? "City name found\n"
+						: "City is not found in the list\n");
+
+//		boolean isCityInList = false;
+//		System.out.print("Checks if the city " + searchCity + " is in the citylist :  ");
+//		for (String city : cityList) {
+//			if (city.equalsIgnoreCase(searchCity)) {
+//				isCityInList = true;
+//				break;
+//			}
+//		}
+//		System.out.println(isCityInList ? "City name found\n" : "City not found in the list\n");
 
 		// Part 3 : Replace cityname starting with T with "Mississauga"
 		for (int i = 0; i < cityList.length; i++) {
@@ -41,7 +46,7 @@ public class CityList {
 		for (String city : cityList) {
 			System.out.print(city + "  ");
 		}
-		
+
 		scanner.close();
 	}
 
